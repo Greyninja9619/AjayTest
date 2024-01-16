@@ -47,5 +47,3 @@ def post_data_to_azure_devops(data):
     if response.status_code != 200:
         raise Exception(f"Failed to post data to Azure DevOps. Status code: {response.status_code}, Response: {response.text}")
 
-if __name__ == '__main__':
-    app.run(debug=True)
