@@ -14,10 +14,11 @@ def webhook():
         # Call the processing and posting function directly
         post_data_to_azure_devops(title)
 
-        return jsonify({"status": "success"})
+        # Render an HTML template
+        return render_template('webhook_template.html', title=title)
 
     except Exception as e:
-        return jsonify({"status": "error", "error": str(e)}), 500
+        return render_template('error_template.html', error=str(e))
 
 def post_data_to_azure_devops(data):
     # Your Azure DevOps REST API request logic goes here
@@ -36,11 +37,6 @@ def post_data_to_azure_devops(data):
         "value": title
     }
     response = requests.post(azure_devops_api_url, json=body, headers=headers)
-
     # Handle response (status code, etc.)
     if response.status_code != 200:
         raise Exception(f"Failed to post data to Azure DevOps. Status code: {response.status_code}, Response: {response.text}")
-
-    # Render an HTML template
-    return render_template('webhook_template.html', title=title)
-
