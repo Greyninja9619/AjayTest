@@ -19,20 +19,16 @@ def webhook():
 
         # Extract "System.Title" from the incoming webhook data
         title = data.get("resource", {}).get("fields", {}).get("System.Title", "")
-        azure_devops_api_url = "https://dev.azure.com/itsmeuzair/TestProject/_apis/wit/workitems/$Bug?api-version=7.1-preview.3"
+        url = "https://dev.azure.com/itsmeuzair/TestProject/_apis/wit/workitems/$Bug?api-version=7.1-preview.3"
         personal_access_token = "oihemdcq2y2hluor2zp357h7a6rt7q3pr45hb3xycwlrkztl5s2a"
-        Token = base64.b64encode(bytes(':' + personal_access_token, 'utf-8')).decode('utf-8')
-        headers = {
-            'Authorization': 'Basic ' + Token,
-            'Content-Type': 'application/json'
-        }
-        body = {
-            "op": "add",
-            "path": "/fields/System.Title",
-            "from": None,
-            "value": title
-        }
-        response = requests.post(azure_devops_api_url, json=body, headers=headers, verify=False)
+        body = [
+         {
+         "op": "add",
+         "path": "/fields/System.Title",
+         "value": title
+         }
+        ]
+        response = requests.post(url, json=body, headers={'Content-Type': 'application/json-patch+json'}, auth=('', personal_access_token))
         
         return jsonify({"status": "success"})
 
