@@ -1,4 +1,6 @@
-from flask import Flask
+from flask import Flask, request, jsonify
+import base64
+import requests
 
 app = Flask(__name__)
 
