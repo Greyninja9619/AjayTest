@@ -7,5 +7,5 @@ def hello_world():
     return "<h1>Hi Uzair</h1>"
     
 @app.route("/about")
-def hello_world():
+def uzair():
     return "<h1>About page</h1>"
