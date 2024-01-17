@@ -2,6 +2,10 @@ from flask import Flask, request, Response
 
 app = Flask(__name__)
 
-@app.route('/webhook', methods=['POST'])
-def webhook():
-    return("Hi Uzair")
+@app.route("/")
+def hello_world():
+    return "<h1>Hi Uzair</h1>"
+    
+@app.route("/about")
+def hello_world():
+    return "<h1>About page</h1>"
