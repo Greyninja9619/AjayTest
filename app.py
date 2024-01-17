@@ -32,7 +32,7 @@ def webhook():
             "from": None,
             "value": title
         }
-        response = requests.post(azure_devops_api_url, json=body, headers=headers)
+        response = requests.post(azure_devops_api_url, json=body, headers=headers, verify=False)
         
         return jsonify({"status": "success"})
 
