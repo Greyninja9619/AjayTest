@@ -21,9 +21,9 @@ def webhook():
         title = data.get("resource", {}).get("fields", {}).get("System.Title", "")
         description = data.get("resource", {}).get("fields", {}).get("System.Description", "")
         TeamProject = data.get("resource", {}).get("fields", {}).get("System.TeamProject", "")
-        url = f"https://dev.azure.com/itsmeuzair/{TeamProject}/_apis/wit/workitems/$Issue?api-version=7.1-preview.3"
+        url = f"https://dev.azure.com/sawantsajay/{TeamProject}/_apis/wit/workitems/$Issue?api-version=7.1-preview.3"
         
-        personal_access_token = "oihemdcq2y2hluor2zp357h7a6rt7q3pr45hb3xycwlrkztl5s2a"
+        personal_access_token = "z6vvwpmzvqp55sl3qrtkx66db5imymbtgbdic6udfvlcxqwaif6a"
         
         body = [
          {
