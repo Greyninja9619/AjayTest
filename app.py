@@ -6,11 +6,11 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "<h1>Hi Uzair</h1>"
+    return "<h1>Hi ajjj</h1>"
     
 @app.route("/about")
 def uzair():
-    return "<h1>About page</h1>"
+    return "<h1>Aboutasd page</h1>"
 
 @app.route('/webhook', methods=['POST'])
 def webhook():
