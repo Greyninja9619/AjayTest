@@ -17,17 +17,27 @@ def webhook():
     try:
         data = request.get_json()
 
-        # Extract "System.Title" from the incoming webhook data
+        # Extract "System.Title" from the incoming webhook data   System.TeamProject
         title = data.get("resource", {}).get("fields", {}).get("System.Title", "")
-        url = "https://dev.azure.com/itsmeuzair/TestProject/_apis/wit/workitems/$Bug?api-version=7.1-preview.3"
+        description = data.get("resource", {}).get("fields", {}).get("System.Description", "")
+        TeamProject = data.get("resource", {}).get("fields", {}).get("System.TeamProject", "")
+        url = f"https://dev.azure.com/itsmeuzair/{TeamProject}/_apis/wit/workitems/$Issue?api-version=7.1-preview.3"
+        
         personal_access_token = "oihemdcq2y2hluor2zp357h7a6rt7q3pr45hb3xycwlrkztl5s2a"
+        
         body = [
          {
          "op": "add",
          "path": "/fields/System.Title",
          "value": title
-         }
+         },
+         {
+         "op": "add",
+         "path": "/fields/System.Description",
+         "value": description
+         }   
         ]
+        
         response = requests.post(url, json=body, headers={'Content-Type': 'application/json-patch+json'}, auth=('', personal_access_token))
         
         return jsonify({"status": "success"})
