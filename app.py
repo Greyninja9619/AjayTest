@@ -23,7 +23,7 @@ def webhook():
         TeamProject = data.get("resource", {}).get("fields", {}).get("System.TeamProject", "")
         url = f"https://dev.azure.com/sawantajay047/{TeamProject}/_apis/wit/workitems/$Issue?api-version=7.1-preview.3"
         
-        personal_access_token = "e4h6nakrqsolehlp724hm4io3nko6mnvis4tj5kysxgjqbvctdvq"
+        personal_access_token = "j7jacb4uqomuii736y2c4k3gomzplacdvc3gqtx7l2sjnwm6wq5q"
         
         body = [
          {
